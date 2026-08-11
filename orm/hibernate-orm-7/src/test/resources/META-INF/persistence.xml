@@ -36,6 +36,10 @@
             <property name="jakarta.persistence.validation.mode" value="NONE"/>
             <property name="hibernate.service.allow_crawling" value="false"/>
             <property name="hibernate.session.events.log" value="true"/>
+
+            <!-- Audit the @Version property so the bug also manifests as a NULL version
+                 in the _AUD row (the data corruption reproduces even without this). -->
+            <property name="org.hibernate.envers.do_not_audit_optimistic_locking_field" value="false"/>
         </properties>
 
     </persistence-unit>
